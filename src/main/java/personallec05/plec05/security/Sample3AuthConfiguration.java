@@ -44,7 +44,7 @@ public class Sample3AuthConfiguration {
     http.formLogin();
 
     http.authorizeHttpRequests()
-        .mvcMatchers("/").authenticated();
+        .mvcMatchers("/sample5/**").authenticated();
 
     http.logout().logoutSuccessUrl("/");
 
