@@ -11,12 +11,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import personallec05.plec05.model.Fruit;
+import personallec05.plec05.model.FruitMapper;
+
 @Controller
 @RequestMapping("/sample5")
 public class Sample51Controller {
 
+  @Autowired
+  FruitMapper fMapper;
+
   @GetMapping("step1")
   public String sample51() {
+    return "sample51.html";
+  }
+
+  @GetMapping("step3")
+  @Transactional
+  public String sample53(ModelMap model) {
+    ArrayList<Fruit> fruit2 = fMapper.selectAllFruit();
+    model.addAttribute("fruits2", fruit2);
     return "sample51.html";
   }
 }

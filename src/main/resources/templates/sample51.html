@@ -9,6 +9,26 @@
 <body>
   <h1>Authorized! <span sec:authentication="name"></span>
   </h1>
+  <p>
+    <a href="/sample5/step3">果物一覧</a>
+  <div th:if="${fruits2}">
+    <table border="1">
+      <thead>
+        <th>Index</th>
+        <th>果物</th>
+        <th>金額</th>
+      </thead>
+      <tbody>
+        <tr th:each="fruit,stat:${fruits2}">
+          <td>[[${stat.index}]]</td>
+          <td>[[${fruit.name}]]</td>
+          <td>[[${fruit.price}]]</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </p>
+
   <a href="/logout">ログアウト</a>
 </body>
 
