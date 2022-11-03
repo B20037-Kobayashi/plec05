@@ -26,11 +26,23 @@ public class Sample51Controller {
     return "sample51.html";
   }
 
-  @GetMapping("step3")
-  @Transactional
+  @GetMapping("step2")
   public String sample53(ModelMap model) {
     ArrayList<Fruit> fruit2 = fMapper.selectAllFruit();
     model.addAttribute("fruits2", fruit2);
+    return "sample51.html";
+  }
+
+  @GetMapping("step3")
+  @Transactional
+  public String sample53(@RequestParam Integer id, ModelMap model) {
+    Fruit fruit3 = fMapper.selectById(id);
+    model.addAttribute("fruit3", fruit3);
+
+    fMapper.deleteById(id);
+
+    ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
+    model.addAttribute("fruits2", fruits2);
     return "sample51.html";
   }
 }
