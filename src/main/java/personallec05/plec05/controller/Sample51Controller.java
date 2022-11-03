@@ -45,4 +45,29 @@ public class Sample51Controller {
     model.addAttribute("fruits2", fruits2);
     return "sample51.html";
   }
+
+  @GetMapping("step4")
+  @Transactional
+  public String sample54(@RequestParam Integer id, ModelMap model) {
+    Fruit fruit4 = fMapper.selectById(id);
+    model.addAttribute("fruit4", fruit4);
+
+    ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
+    model.addAttribute("fruits2", fruits2);
+    return "sample51.html";
+  }
+
+  @PostMapping("step5")
+  public String sample55(@RequestParam Integer id, @RequestParam String name, @RequestParam Integer price,
+      ModelMap model) {
+
+    Fruit fruit = new Fruit(id, name, price);
+
+    fMapper.updateById(fruit);
+
+    ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
+    model.addAttribute("fruits2", fruits2);
+
+    return "sample51.html";
+  }
 }
