@@ -33,4 +33,24 @@ public class AsyncCountFruit56 {
       logger.warn("Exception:" + e.getClass().getName() + ":" + e.getMessage());
     }
   }
+
+  @Async
+  public void pushFruit(SseEmitter emitter) {
+    logger.info("pushFruit start");
+    Fruit fruit = new Fruit();
+    fruit.setName("桃");
+    fruit.setPrice(300);
+
+    for (int i = 0; i < 10; i++) {
+      try {
+        logger.info("send(fruit)");
+        TimeUnit.SECONDS.sleep(1);
+        emitter.send(fruit);
+      } catch (Exception e) {
+        logger.warn("Exception:" + e.getClass().getName() + ":" + e.getMessage());
+        break;
+      }
+    }
+    emitter.complete();
+  }
 }
