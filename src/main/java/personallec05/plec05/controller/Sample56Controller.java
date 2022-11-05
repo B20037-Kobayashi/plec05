@@ -48,4 +48,11 @@ public class Sample56Controller {
     return emitter;
   }
 
+  @GetMapping("step2")
+  public SseEmitter pushFruit() {
+    logger.info("pushFruit");
+    final SseEmitter sseEmitter = new SseEmitter();
+    this.ac56.pushFruit(sseEmitter);
+    return sseEmitter;
+  }
 }
